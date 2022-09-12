@@ -1,0 +1,22 @@
+  bool findTriplets(int arr[], int n)
+    { 
+       // first sort the array
+        sort(arr,arr+n);
+        // use two pointer algorithm
+        //make one pointer at the end of array and another just after the ith position
+        for(int i=0;i<n;i++){
+            int j=i+1,k = n-1;
+            while (j<n && j<k){
+                
+                    if(arr[i]+arr[j]+arr[k]==0) return true;
+                    //if we find the answer then return true;
+                    else if(arr[i]+arr[j]+arr[k]>0) k--;
+                    //if sum is greater than 0 then decrement k
+                    else if(arr[i]+arr[j]+arr[k]<0) j++;
+                    //if sum is smaller than 0 then increment j
+                
+            }
+            
+        }
+        return false;
+    }
