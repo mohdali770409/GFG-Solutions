@@ -1,0 +1,23 @@
+int minDist(int a[], int n, int x, int y) {
+        // half1 and half2 set as -1 because index starts from 0
+        int half1= -1 ,half2=-1;
+        // ans set as maximum of integer because we have to find minimum number
+        int ans =INT_MAX;
+        for(int i=0;i<n;i++){
+            if(a[i]==x)
+            
+                half1 = i;
+            
+            else if(a[i]==y) half2 = i;
+            //if both half1 and half2 becomes positive then we evaluate
+            //because we have to find that both indexes
+            //is present or not if not present then we will return zero
+            if(half1 !=-1 && half2!=-1){
+            ans = min(ans,abs(half1-half2));
+            }
+            
+        }
+        if(half1 == -1 || half2==-1) return -1;
+        return ans;
+        
+    }
