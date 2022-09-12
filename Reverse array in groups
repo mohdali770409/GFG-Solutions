@@ -1,0 +1,32 @@
+
+ void reverseInGroups(vector<long long>& arr, int n, int k){
+        // code here
+        int m=0; //starting index where reversing starts
+        int count =0; // for counting number of elements
+        for(int i=0;i<n;i++){
+            count++;
+            // if count becomes equal to group size which is k then start reversing till m<j
+            if(count==k){
+            // j is used for group ending size where reversing ends
+                int j=i;
+                while(m<j){
+                    // reversing using swapping
+                    swap(arr[m],arr[j]);
+                    m++,j--;
+                    
+                }
+                //now store next starting index where you want to reverse
+                m=i+1;
+                count =0;
+                
+            }
+            
+        }
+        // now if count is smaller than given group size reverse them now
+        if(count<k){
+            int j=n-1;
+            while(m<j){
+                swap(arr[m],arr[j]);
+                m++,j--;
+            }
+        }
