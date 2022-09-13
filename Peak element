@@ -1,0 +1,22 @@
+ int peakElement(int arr[], int n)
+    {
+       // Your code here
+       // initialize low and high as starting and ending point of array.
+       int low=0,high = n-1;
+       
+       while(low<high){
+        //find mid
+           int mid = (low+high)/2;
+           //if arr[mid] is greater than its next element then assign high as mid
+           if(arr[mid]>arr[mid+1]) high = mid;
+           //if next element is greater then assign low as mid+1;
+           else low = mid+1;
+           
+           
+       }
+      // we are returning low because while loop will end when l becomes equal to high so low will be the answer
+       return low;
+       
+       
+       
+    }
