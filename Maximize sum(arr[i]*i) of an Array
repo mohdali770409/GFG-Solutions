@@ -1,0 +1,15 @@
+int Maximize(int a[],int n)
+    {
+        //first we will sort the array
+        sort(a,a+n);
+        //will initialise maxSum as 0
+        long long int maxSum=0;
+        //we have to store value in 10^9+7 modulus value so we will initialise it as mod
+        const unsigned int mod = (int)(pow(10,9)+7);
+        for(int i=0;i<n;i++){
+        //perform mod operation with given value in every operation
+            maxSum = (maxSum%mod+(a[i]%mod*i%mod))%mod;
+            
+        }
+        return maxSum%mod;
+    }
