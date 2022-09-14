@@ -1,0 +1,39 @@
+ Node *insertAtBegining(Node *head, int x) {
+      
+       //create a new node
+      Node *p = new Node(x);
+      
+      //assign its next to head
+      p->next = head;
+       //now assign head to p
+       head =p;
+       
+       return head;
+       
+       
+       
+       
+       
+    }
+    
+    
+    //Function to insert a node at the end of the linked list.
+    Node *insertAtEnd(Node *head, int x)  {
+       // Your code here
+       //assign p as head
+       Node *p = head;
+       //create a new node
+       Node *t = new Node(x);
+       //if head is not present then return new node because it will be first node
+       if(!head) return t;
+       //run loop till the last node
+       while(p->next!=NULL){
+           p = p->next;
+           
+           
+       }
+       assing p next to new node
+        p->next = t;
+        return head;
+        
+    }
