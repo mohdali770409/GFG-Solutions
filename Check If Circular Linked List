@@ -1,0 +1,13 @@
+bool isCircular(Node *head)
+{
+ // assign temp as head's next node so we can enter into loop otherwise use do while 
+   Node *temp = head->next;
+   //run loop till the last node if it is linear then null node will come otherwise if circular then if condition will take place
+   while(temp!=NULL){
+       if(temp->next == head){
+           return true;
+       }
+        temp = temp->next;
+   }
+   return false;
+}
