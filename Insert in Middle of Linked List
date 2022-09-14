@@ -1,0 +1,25 @@
+Node* insertInMiddle(Node* head, int x)
+{
+	// create two pointers one is fast which will move by 2 node and slow one will move one by one
+	Node *fast = head;
+	Node *slow = head;
+  // create temp node,it will be added in between the linkedlist
+	Node *temp = new Node(x);
+  //if head is not present then return created node. it will be only element in the linkedlist
+	if(!head) return temp;
+	while(fast->next){
+	    fast= fast->next;
+	    if(fast->next){
+	        fast = fast ->next;
+	    }
+	    else break;
+	    slow = slow->next;
+	    
+	}
+  // assing slow pointer next to temp pointer next so that temp can be added in between
+	temp->next = slow->next;
+	slow->next = temp;
+	return head;
+	
+	
+}
