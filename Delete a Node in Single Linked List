@@ -1,0 +1,24 @@
+Node* deleteNode(Node *head,int x)
+{
+    //Your code here
+    
+    if(head==NULL) return head;
+    
+    
+    Node *p = head;
+    Node *q = NULL;
+    //if the element is first then we have to deal differently than any other case. 
+    if(x==1){
+        p = p->next;
+        return p;
+    }
+    for(int i=0;i<x-1;i++){
+
+        q=p;
+        p = p->next;
+        
+    }
+    q->next = p->next;
+  
+    return head;
+}
