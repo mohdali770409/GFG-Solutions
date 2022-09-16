@@ -1,0 +1,91 @@
+ //Approach 1
+ 
+ Node * removeDuplicates( Node *head) 
+    {
+     
+     
+     //initialise a vector to store elements
+     
+     vector <int> vec;
+     
+     //initialise map 
+     unordered_map <int,int> m;
+     
+     // create a new node . we are creating new linkedlist which we will return
+     Node *first = new Node(head->data);
+     
+     // initialise last pointer to insert by o(1) complexity
+     Node *last = first;
+     
+     // add first element of linkedlist so we can start our new linked list to 1
+     m[head->data]++;
+     
+     //create p node and run a loop and insert elements in vector
+     Node *p = head;
+     
+     
+     while(p){
+        vec.push_back(p->data);
+        p = p->next;
+     }
+     
+     // check if elements are present already in map don't add in new linkedlist so we have unique elements
+     
+     for(int i=1;i<vec.size();i++){
+         if(m.find(vec[i])==m.end()){
+             Node *temp = new Node(vec[i]);
+             last->next = temp;
+             last = temp;
+             
+         }
+         // after inserting element add that element in linkedlist so further duplicate can be avoided
+         
+         m[vec[i]]++;
+         
+     }
+     // return first node of newly created linkedlist
+     
+     return first;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    //another approach space complexity(number of unique elements) without using vector
+    Node * removeDuplicates( Node *head) 
+   {
+       if(head==NULL) return NULL;
+       unordered_map<int,int> mp;
+       
+       Node * temp = head;
+       // here we will mark 1 on map
+       
+       mp[temp->data] = 1;
+       while(temp->next!=NULL)
+       {
+           if(mp.count(temp->next->data))
+           {
+               temp->next = temp->next->next;
+           }
+           else{
+               temp = temp->next;
+               mp[temp->data] = 1;
+           }
+       }
+       
+       return head;
+   }
+    
+    
+    
+    
+    
+    
+    
+    
