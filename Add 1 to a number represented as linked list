@@ -1,0 +1,58 @@
+//
+Node * reverse(Node *head){
+        
+        Node *p= head;
+        Node *q = NULL;
+        Node *r = NULL;
+        while(p){
+            r = q;
+            q= p;
+            p = p->next;
+            q->next =r;
+        }
+        return q;
+        
+    }
+    
+    Node* addOne(Node *head) 
+    {
+        // Your Code here
+        // return head of list after adding one
+        
+        
+        if(head == NULL){
+            return head;
+        }
+        if(head->next == NULL){
+            head->data = head->data +1;
+            return head;
+        }
+        //first we will reverse the linkedlist
+        head = reverse(head);
+        // we will set carry as 1 so we can add last node (currently this is present node)
+        
+        int carry=1;
+        //initiliase temp as head Node and prev as previous node
+        Node *temp= head;
+        Node *prev= NULL;
+        // run temp loop tll null
+        while(temp){
+            prev = temp;
+            // add temp data and carry 
+            int sum = temp->data +carry;
+            int ans = sum%10;
+            carry = sum/10;
+            temp->data = ans;
+            temp = temp->next;
+        }
+        // if carry is greater than 0 then make a new node like in case of 99 9999 and add carry to last node
+        if(carry>0){
+            Node *last = new Node(carry);
+                prev->next = last;
+                prev = prev->next;
+            }
+        // again reverse the linkedlist
+        head = reverse(head);
+        return head;
+       
+    }
