@@ -1,0 +1,35 @@
+int countNodesinLoop(struct Node *head)
+{
+    // Code here
+    // create a fast and slow node
+    Node *fast = head;
+    Node *slow=head;
+    
+    //run a loop till fast or next node of fast becomes empty and if the linkedlist have loop then break the loop when fast becomes equal to slow
+    
+    while(fast!=NULL && fast->next!=NULL){
+        slow = slow->next;
+        fast = fast->next->next;
+        if(slow==fast) break;
+    }
+    
+    //if the linkedlist contains no loop then its fast or fast next node should be null in that case we will return 0 becauses no loop is present
+    
+    if(fast==NULL || fast->next==NULL) return 0;
+    
+    // if linkedlist contains a loop then we will increment slow with 1 node because fast and slow are still equal 
+    //where we perform break operation that's why we start count as 1
+    
+    
+    else slow = slow->next;
+    int count=1;
+    while(slow != fast){
+        count++;
+        slow = slow->next;
+        
+        
+    }
+    return count;
+    
+    
+}
