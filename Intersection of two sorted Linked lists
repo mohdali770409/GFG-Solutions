@@ -1,0 +1,48 @@
+Node* findIntersection(Node* head1, Node* head2)
+{
+    // Your Code Here
+    //assign p as head1 and q as head2
+    Node *p = head1;
+    Node *q = head2;
+    
+    //create a unordered map so that we can know element is present in both linkedlist or not
+    unordered_map<int,int> m;
+    // run a loop till p becomes NULL and store element in map 
+    while(p){
+        if(m.find(p->data)==m.end()){
+              m[p->data] = 1;
+             
+        }
+         p = p->next;
+    }
+    
+    // create a new linkedlist which we have to return
+    
+    Node *first = NULL;
+    Node *last = first;
+    //run a loop till q becomes NULL
+    while(q){
+        
+        // if element is present in map it means it is a intersection
+        if(m.find(q->data)!=m.end()){
+            Node *temp = new Node(q->data);
+            if(first ==NULL) {
+                first = temp;
+                
+            }
+            if(last==NULL){
+                last = first;
+            }
+            else{
+                last->next= temp;
+                last = temp;
+            }
+            
+            // erase element from map so we can avoid duplicates
+           
+            m.erase(q->data);
+        }
+        q = q->next;
+    }
+    return first;
+}
