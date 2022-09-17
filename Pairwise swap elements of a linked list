@@ -1,0 +1,43 @@
+   Node* pairWiseSwap(struct Node* head) 
+    {
+        // The task is to complete this method
+        
+        // the two pointers first and second,second will be the next node of first
+        Node *second = head->next;
+        
+        Node *first = head;
+        Node *prev = NULL;
+        if(head == NULL) return head;
+        if(head && head->next==NULL) return head;
+        
+        //make head as NULL pointer so we can consider first swap of second
+        
+        head = NULL;
+        
+        //run loop till second becomes null
+        while(second){
+        // swap both nodes
+        
+            first->next = second->next;
+            second->next = first;
+            
+            //make head as head pointer so we can return head
+            
+            if(head ==NULL) head = second;
+            
+            // prev is used for joining links of linkedlist
+            
+            if(prev){
+                prev->next = second;
+                prev = first;
+            }
+            else prev = first;
+            first = first->next;
+            if(first){
+                second = first->next;
+            }
+            else second = NULL;
+            
+        }
+        return head;
+    }
