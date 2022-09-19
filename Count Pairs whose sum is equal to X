@@ -1,0 +1,24 @@
+ int countPairs(struct Node* head1, struct Node* head2, int x) {
+        // Code here
+        
+        //initiliase unordered map to store elements of head1 linkedlist
+        unordered_map <int,int> m;
+        Node *first = head1;
+        Node *second = head2;
+        int count =0;
+        while(first){
+            if(m.find(first->data)==m.end()) m[first->data] = 1;
+            first = first->next;
+        }
+        
+        //now check if x-second->data(suppose x =15, and in the second linkedlist 12 is present now 
+        //check if 15-12=3 is present in map or we can say head1 linkedlist if present the pair exist)
+        //is present in map.if present then increment count.
+        
+        while(second){
+            int value = x-second->data;
+            if(m.find(value)!=m.end()) count++;
+            second = second->next;
+        }
+        return count;
+    }
