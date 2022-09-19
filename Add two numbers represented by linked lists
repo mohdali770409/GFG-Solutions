@@ -1,0 +1,102 @@
+ Node * reverse(Node *head){
+        
+        Node *p = head;
+        Node *q = NULL;
+        Node *r = NULL;
+        while(p){
+            r =q;
+            q=p;
+            p = p->next;
+            q->next = r;
+            
+        }
+        return q;
+    }
+    //Function to add two numbers represented by linked list.
+    struct Node* addTwoLists(struct Node* first, struct Node* second)
+    {
+        // code here
+        //first reverse both linkedlist(because addition is performed fron right side)
+        first  = reverse(first);
+        second = reverse(second);
+        
+        //first initiliase carry with 0 so we add 0 in the first addition
+        
+        int carry = 0;
+        
+        //initialise head and last with NULL head is for the first node and last is to join previous nodes
+        
+        Node *head = NULL;
+        Node *last = NULL;
+        
+        //sum is for addition and ans is for inserting in a new linkedlist
+        
+        int sum=0;
+        int ans=0;
+        
+        //perform while loop till first or second becomes null
+        
+        while(first && second){
+            
+            
+            sum = first->data +second->data+carry;
+            ans = sum%10;
+            carry = sum/10;
+            
+            Node* temp = new Node(ans);
+            if(head==NULL) head = temp;
+            if(last==NULL) last = temp;
+            else{
+            
+                last->next = temp;
+                last = temp;
+            }
+            
+        first = first->next;
+        second = second->next;
+            
+        }
+        
+        //now below  loop is for if any linkedlist node is left 
+        
+        while(first){
+            
+            sum = first->data +carry;
+            carry = sum/10;
+            ans = sum%10;
+            Node *temp = new Node(ans);
+            last->next = temp;
+            last = temp;
+            first = first->next;
+        }
+        
+        
+        while(second){
+            sum = second->data +carry;
+            carry = sum/10;
+            ans = sum%10;
+            Node *temp = new Node(ans);
+            last->next = temp;
+            last = temp;
+            second = second->next;
+            
+        }
+        
+        //  suppose last node is 9 and carry is 1 then after addition it becomes 10 so we need a new node
+        
+        if(carry!=0){
+            Node *temp = new Node(carry);
+            last->next = temp;
+            last = temp;
+        }
+        
+        // now again reverse a new node
+        head = reverse(head);
+        return head;
+        
+        
+        
+        
+        
+        
+    }
