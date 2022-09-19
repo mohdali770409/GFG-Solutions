@@ -1,0 +1,50 @@
+   Node *sortedInsert(struct Node* head, int data) {
+        // Code here
+        
+        // take two pointer,initialise p with head and q with NULL
+        Node* p = head;
+        Node *q = NULL;
+        
+        //if head node is null then we create a node and assign with head node and reutnr
+        if(!p){
+            Node *temp =  new Node(data);
+            head = temp;
+        }
+        
+        int flag =0;
+        
+        while(p){
+            if(p->data>data){
+            //if q there is only one node in the linkedlist
+            
+                if(q==NULL){
+                    Node *temp = new Node(data);
+                    temp->next = head;
+                    head = temp;
+                    flag =1;
+                    break;
+                }
+                // for in the middle of linkedlist
+                else{
+                    Node *temp = new Node(data);
+                    temp->next = q->next;
+                    q->next = temp;
+                    flag=1;
+                    break;
+                }
+                
+            }
+            q =p;
+            p = p->next;
+        }
+       // if all the elements is smaller than the given data then add node in the last
+        
+        if(flag==0){
+        Node *temp = new Node(data);
+        q->next = temp;
+        
+        }
+        
+        
+        return head;
+    }
