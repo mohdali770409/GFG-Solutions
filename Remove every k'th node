@@ -1,0 +1,33 @@
+Node* deleteK(Node *head,int K)
+{
+  
+  
+  
+  Node *p= head;
+  Node *q=NULL;
+  int count=0;
+  //if k equal 1 it means every node should be deleted so we initialise head as NULL and return
+  if(K==1) {
+      head=NULL;
+      return head;
+  }
+  
+  //run loop till p exists if count becomes k-1(count==k-1 because for k-1 count there is k traversal of p node )  it means we have to delete element 
+  while(p){
+      if(count==K-1){
+          q->next = p->next;
+       
+        if(q->next)  p = q->next;
+         
+          count=0;
+          
+      }
+      q=p;
+      p = p->next;
+      count++;
+      
+  }
+  return head;
+  
+  
+}
