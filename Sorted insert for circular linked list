@@ -1,0 +1,62 @@
+ Node *sortedInsert(Node* head, int data)
+    {
+       //Your code here
+       
+       Node *p = head;
+       
+       //flag is used for the last node
+       
+       int flag =0;
+       
+       //q will be previous node of p
+       Node *q = NULL;
+       
+       //if we have to insert element at first
+       
+       if(p->data>=data){
+           Node *temp = new Node(data);
+           
+           while(p->next!=head){
+               p = p->next;
+               
+               
+           }
+           p->next = temp;
+           temp->next = head;
+           head = temp;
+           return head;
+       }
+       
+      
+      //if we have to insert element in middle
+      
+       else{
+           while(p->next!=head){
+               if(p->data>=data){
+                   Node* temp = new Node(data);
+                   temp->next = q->next;
+                   q->next = temp;
+                   
+                  //if we get in the loop then we assign flag as 1
+                  
+                   flag =1;
+                   break;
+                   
+               }
+               q=p;
+               p = p->next;
+           }
+       }
+       
+       //if flag is 0 it means we have to insert element at last
+       
+       if(flag==0){
+        Node *temp = new Node(data);
+        p->next = temp;
+        temp->next = head;
+       }
+       
+       
+       return head;
+       
+    }
