@@ -1,0 +1,31 @@
+long long  multiplyTwoLists (Node* l1, Node* l2)
+{
+  //Your code here
+  
+  //initialise num1 and num2 with 0 and 0.Store l1 number into num1 and l2 number into l2.
+  
+  Node *first = l1;
+  Node *second = l2;
+  
+  
+  long long num1 =0;
+  long long num2=0;
+  
+  //store 10^2+7 in mod variable
+  long long mod = pow(10,9)+7;
+  
+  //run first loop into and store number in num1 
+  while(first){
+  
+  //we have used mod operator because output may be very large(and it is given in the question also)
+      num1 = ((num1*10)%mod+(first->data)%mod)%mod;
+      first = first->next;
+  }
+  
+  while(second){
+      num2 = ((num2*10)%mod+(second->data)%mod)%mod;
+      second = second->next;
+  }
+  return ((num1%mod)*(num2%mod))%mod;
+  
+}
