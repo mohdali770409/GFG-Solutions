@@ -1,0 +1,55 @@
+//in this solution we have use extra spaces and created a new linkedlist
+
+Node* divide(int N, Node *head){
+        // code here
+        
+        //initialise even and odd vector.even vector will store even number and odd number will store odd number.
+        vector <int> even;
+        vector <int> odd;
+        Node *p = head;
+       
+       //now store even and odd in vectors
+       
+        while(p){
+            if(p->data%2==0) even.push_back(p->data);
+            else odd.push_back(p->data);
+            p = p->next;
+        }
+        
+        
+        Node *first = NULL;
+        Node *last=NULL;
+        
+        //make a new linkedlist and store first even and odd.
+        
+        
+        for(auto it:even){
+            Node *temp = new Node(it);
+            if(first==NULL){
+                first = temp;
+                last = temp;
+            }
+            else{
+                last->next = temp;
+                last = temp;
+            }
+        }
+        
+       
+        
+        for(auto it:odd){
+             Node *temp = new Node(it);
+            if(first==NULL){
+                first = temp;
+                last = temp;
+            }
+            else{
+                last->next = temp;
+                last = temp;
+            }
+            
+        }
+        
+        return first;
+        
+    }
