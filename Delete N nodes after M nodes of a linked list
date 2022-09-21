@@ -1,0 +1,36 @@
+   void linkdelete(struct Node  *head, int M, int N)
+    {
+        //Add code here   
+        // create two node one is first and second is second.
+        Node *first = head;
+        Node *second = NULL;
+        
+        //run while loop till it becomes NULL and inside while, run two for loop till M and N simultaneously.
+        while(first){
+            for(int i=0;i<M;i++){
+            
+            //if first becomes NULL then stop all loop
+                if(!first) return;
+                second = first;
+                first = first->next;
+            }
+            
+            //run for loop till N; 
+            
+            for(int i=0;i<N;i++){
+            
+            //if first becomes NULL then assign second node next to NULL and exit the function
+                if(!first) {
+                    second->next = NULL;
+                    return;
+                }
+                
+                
+                first = first->next;
+            }
+         
+            // after for loop ends and first node is not null then assign second next to first
+            second->next = first;
+        }
+        
+    }
