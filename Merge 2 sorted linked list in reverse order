@@ -1,0 +1,60 @@
+//first we will join node in a sorted order(ascending) then after sorting we will reverse the node
+
+Node *reverse(Node *head){
+    Node *p= head;
+    Node *q = NULL;
+    Node *r = NULL;
+    while(p){
+        r=q;
+        q=p;
+        p = p->next;
+        q->next = r;
+        
+    }
+    return q;
+}
+
+
+struct Node * mergeResult(Node *node1,Node *node2)
+{
+    // your code goes here
+    
+    //here take dummy node as a linker. dummy node will link nodes in a sorted order, and temp is used store first node of linkedlist dummy
+    Node *dummy = new Node;
+    Node *first = node1;
+    Node *second = node2;
+    Node *temp = dummy;
+    
+    
+    while(first && second){
+    
+    //if the first data is greater than second data then link dummy node next to second data and move second
+        if(first->data >=second->data){
+            dummy->next = second;
+            second = second->next;
+        }
+        
+        // if second data is greater then move then link dummy node next to first data and move first
+        else {
+            dummy->next = first;
+            first = first->next;
+        }
+        
+        //after linking move dummy node so it acts as previous node of linkedlist 
+        dummy = dummy->next;
+ 
+    }
+    
+    //if the second becomes empty then link dummy node to first other wise link to second and otherwise make dummy next as NULL
+    if(first){
+        dummy->next = first;
+        
+    }
+    else if(second) dummy->next = second;
+    else dummy->next = NULL;
+    
+    //till linkedlist is sorted in increasing order now reverse it.here temp next is used because the first node has no value;
+    Node *head = reverse(temp->next);
+    return head;
+    
+}
