@@ -1,0 +1,46 @@
+    Node *rotateDLL(Node *start,int p)
+    {
+        //Add your code here
+        
+        //take two node. initialise both with starting node
+        
+        Node *second = start;
+        Node *begin = start;
+        
+        //initialise count with 0
+        
+        int count=0;
+        
+        //run loop till second becomes empty or count becomes equal to p.
+        
+        
+        while(second){
+            count++;
+            if(count==p){
+            
+            //if count becomes equals to p then assign start with seconds next node and make second node next and start node previous to NULL
+            
+                start = second->next;
+                second->next->prev = NULL;
+                second->next = NULL;
+             
+                break;
+                
+            }
+            second = second->next;
+
+        }
+        
+        
+        //now initialise first with start node and run loop till first next is NULL
+        
+        Node *first = start;
+        while(first->next){
+            first = first->next;
+        }
+        
+        //now link first next to begin and begin prev to first
+        first->next = begin;
+        begin->prev = first;
+        return start;
+    }
