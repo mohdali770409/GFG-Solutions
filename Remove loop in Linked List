@@ -1,0 +1,49 @@
+   void removeLoop(Node* head)
+    {
+        // code here
+        // just remove the loop without losing any nodes
+        
+         //Floyd's Cycle Detection Algorithm
+        
+        //create fast and slow node for finding loop is present or not
+        
+        Node *fast = head;
+        Node *slow = head;
+        while(fast && fast->next){
+            fast = fast->next->next;
+            slow = slow->next;
+            
+            
+            //if loop is present then slow becomes equal to fast 
+            
+            
+            if(slow==fast){
+            
+            //then again assign slow as head because of floyd algorithm 
+            
+                slow = head;
+                
+              //again run loop till slow becomes equal to fast
+              
+                while(slow!=fast){
+                   
+                    slow = slow->next;
+                    fast = fast->next;
+                }
+                
+                //now create node temp and assign slow value to it
+                
+                Node *temp = slow;
+                
+                //run loop till temps next node will be slow
+                while(temp->next!= slow){
+                    temp = temp->next;
+                }
+                
+                //now finally assing temp next as NULL
+                
+                temp->next = NULL;
+                
+            }
+        }
+    }
