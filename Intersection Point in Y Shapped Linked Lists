@@ -1,0 +1,20 @@
+int intersectPoint(Node* head1, Node* head2)
+{
+
+//here we will solve this problem using two pointer algorithm
+//when one node reaches to null then we will redirect to the another list . and when it will get equal that point will be intersection point.
+    Node *first = head1;
+    Node *second = head2;
+    
+    
+    while(first != second){
+        if(first==NULL) first = head2;
+        else first = first->next;
+        if(second == NULL) second = head1;
+        else second = second->next;
+        
+        
+    }
+    return first->data;
+    
+}
