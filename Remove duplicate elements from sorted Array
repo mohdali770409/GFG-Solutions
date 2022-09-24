@@ -1,0 +1,15 @@
+  int remove_duplicate(int a[],int n){
+       //initialise count and assign with 0
+        int count=0;
+       
+       // run a loop from 1 and check if previous element is equal to the current element or not.
+       // if equal then increment count else start filling from index 0 and return total unique elements
+        for(int i=1;i<n;i++){
+            if(a[i]==a[i-1]) count++;
+            else{
+                a[i-count] = a[i];
+            }
+            
+        }
+        return n-count;
+    }
