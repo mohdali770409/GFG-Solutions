@@ -1,0 +1,27 @@
+struct node *reverse (struct node *head, int k)
+    { 
+        // Complete this method
+        
+        //initialise forward,curr and prev forward will be one step away from curr and prev will be one step behind from curr
+        node *forward =NULL;
+        node *prev = NULL;
+        node *curr = head;
+        int count = 0;
+        
+        //now rotate the linkedlist till count becomes k-1
+        while(curr && count<k){
+            forward = curr->next;
+            curr->next = prev;
+            prev = curr;
+            curr = forward;
+            count++;
+            
+        }
+        
+        // now again call function recursively 
+        if(forward){
+            head->next = reverse(forward,k);
+        }
+        return prev;
+        
+    }
