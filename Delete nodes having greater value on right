@@ -1,0 +1,44 @@
+    //first reverse the linkedlist
+    
+    Node *reverse(Node *head){
+        Node *p = head;
+        Node *q = NULL;
+        Node *r = NULL;
+        while(p){
+            r=q;
+            q=p;
+            p = p->next;
+            q->next = r;
+        }
+        return q;
+    }
+    
+    Node *compute(Node *head)
+    {
+        
+        //reversing linkedlist
+        
+        head = reverse(head);
+        
+        //store head node address in the temp node
+        
+        Node *temp = head;
+        //run a loop till temp next is null
+        
+        while(temp && temp->next){
+        
+        //if temp data is greater than temp next data then delete temp next node
+        
+            if(temp->data>temp->next->data){
+                temp->next = temp->next->next;
+                
+            }
+            else temp = temp->next;
+            
+        }
+        
+        //again reverse the linkedlist
+        
+       head = reverse(head);
+        return head;
+    }
