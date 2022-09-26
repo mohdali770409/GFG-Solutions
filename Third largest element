@@ -1,0 +1,51 @@
+  // we can use 2 approaches. 1 is without sorting and 2nd is with sorting
+  
+  
+  
+  approch 1: without sorting
+  int digit1 = INT_MIN;
+         int digit2 = INT_MIN;
+         int digit3 = INT_MIN ;
+         // if number is smaller than 3. then return -1 because there is not third element
+         if(n < 3)
+         {
+             return -1;
+         }
+         // find first largest number.first largest will be greatest of all
+         for(int i = 0; i < n ; i++)
+         {
+             if(digit1 < a[i])
+             {
+                 digit1 = a[i];
+             }
+         }
+         // find Second largest number.second will be greater than other but smaller than first
+         for(int i = 0; i < n; i++)
+         {
+             if(digit2 < a[i] && a[i] < digit1)
+             {
+                 digit2 = a[i];
+             }
+         }
+         // find third largest .third will be greater than other but smaller than first and also second
+         for(int i = 0; i < n; i++)
+         {
+             if(digit3 <= a[i] && a[i] < digit1 && a[i] < digit2)
+             {
+                 digit3 = a[i];
+             }
+         }
+         return digit3;
+         
+         
+        
+        //Approch 2 with sorting
+  
+  
+  int thirdLargest(int a[], int n)
+    {
+         //Your code here
+         if(n<3) return -1;
+         sort(a,a+n);
+         return a[n-3];
+    }
