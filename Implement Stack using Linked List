@@ -1,0 +1,37 @@
+void MyStack ::push(int x) 
+{
+    //first make an new node and store value of x in the node
+    
+    StackNode *newNode = new StackNode(x);
+    
+    //now make newNode next pointing to top because we want our top to be first element of linkedlist
+    
+    newNode->next = top;
+    
+    //now assign top as newNode
+    top =newNode;
+    
+}
+
+//Function to remove an item from top of the stack.
+int MyStack ::pop() 
+{
+    //first check linkedlist is empty or not.if empty then return -1 
+    
+    if(top==NULL) return -1;
+    //now create a new node and assign as top
+    
+    StackNode *temp = top;
+    
+    //take out value of top so we can return
+    
+    int val = temp->data;
+    
+    //now increment top by 1 and delete new node(memory management)
+    top = top->next;
+    delete temp;
+    
+    //now return value
+    return val;
+    
+}
