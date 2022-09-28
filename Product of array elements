@@ -1,0 +1,19 @@
+long long int product(int ar[], int n, long long int mod)
+ {
+     
+     //code here
+     
+     //initialise a variable with 1
+     
+     long long int prod=1;
+     
+     //run a loop till n
+     
+     for(int i=0;i<n;i++){
+     
+     //before multiplying find remainder of element and product then multiply because prod may be greater than lon long int
+     
+         prod = (prod)%mod*(ar[i])%mod;
+     }
+     return prod%mod;
+ }
