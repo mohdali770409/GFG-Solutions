@@ -1,0 +1,41 @@
+    string reverseEqn (string s)
+        {
+           //initialise two stack.one is for storing numbers and one is for both.
+           
+            
+            stack <char> st;
+            stack <char> temp;
+            
+            // run a loop till last character
+            
+            for(int i=0;i<s.length();i++){
+            
+            //check the element is integer or character.if the element is integer then push in temp variable
+            //if the element is character then first remove integers from temp then push in st stack.
+            
+                if(isdigit(s[i])){
+                    temp.push(s[i]);
+                    
+                }
+                else{
+                    while(!temp.empty()){
+                        st.push(temp.top());
+                        temp.pop();
+                    }
+                    st.push(s[i]);
+                }
+            }
+            
+            
+            
+            while(!temp.empty()){
+                st.push(temp.top());
+                temp.pop();
+            }
+            int i=0;
+            while(!st.empty()){
+                s[i++] = st.top();
+                st.pop();
+            }
+            return s;
+        }
