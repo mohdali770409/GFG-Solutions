@@ -1,0 +1,28 @@
+//first fill the value as in one stack.push can be directly but for pop we need fifo. 
+//so we will first pop all the elements from first stack and fill in the second stack and delete top from second stack and again push to first stack
+void StackQueue :: push(int x)
+{
+    // Your Code
+    s1.push(x);
+}
+//during pop
+
+//Function to pop an element from queue by using 2 stacks.
+int StackQueue :: pop()
+{
+        // Your Code    
+        int x =-1;
+        while(!s1.empty()){
+            s2.push(s1.top());
+            s1.pop();
+        }
+        if(!s2.empty()){
+            x = s2.top();
+            s2.pop();
+        }
+        while(!s2.empty()){
+            s1.push(s2.top());
+            s2.pop();
+        }
+        return x;
+}
