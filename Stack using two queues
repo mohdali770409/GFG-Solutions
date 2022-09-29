@@ -1,0 +1,27 @@
+void QueueStack :: push(int x)
+{
+//stack is a LIFO type data structure so we need to make push and pop as like LIFO.
+//first push all queue element in second queue then add element and now push all the second element into queue 2.
+        while(!q1.empty()){
+            q2.push(q1.front());
+            q1.pop();
+        }
+        q1.push(x);
+        while(!q2.empty()){
+            q1.push(q2.front());
+            q2.pop();
+        }
+}
+
+//Function to pop an element from stack using two queues. 
+int QueueStack :: pop()
+{
+        //check queue is empty or nor if empty return -1 else delete first element of queue and return the value.
+        int x =-1;
+        if(!q1.empty()){
+        x = q1.front();
+        q1.pop();
+        }
+       
+        return x;
+}
