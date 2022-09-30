@@ -1,0 +1,41 @@
+
+void push(stack<int>& s, int a){
+
+	s.push(a);
+}
+
+bool isFull(stack<int>& s,int n){
+	// if stack size is equal to s means stack is full then return 1 else 0
+	if(s.size()==n) return 1;
+	else return 0;
+}
+
+bool isEmpty(stack<int>& s){
+	// Your code goes here
+	if(s.size()==0) return 1;
+	else return 0;
+}
+
+int pop(stack<int>& s){
+	// Your code goes here
+	int x= -1;
+	if(!s.empty()){
+	    x = s.top();
+	    s.pop();
+	}
+	return x;
+}
+
+int getMin(stack<int>& s){
+	// Your code goes here
+  
+  //take maximum value in min variable and run a loop till stack becomes empty and check if s.top is smaller than min then store it.
+	int min = 2147483647;
+	while(!s.empty()){
+	    if(min>s.top()) min = s.top();
+	    s.pop();
+	    
+	    
+	}
+	return min;
+}
