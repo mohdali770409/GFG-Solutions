@@ -1,0 +1,22 @@
+	vector<int> barcketNumbers(string S)
+	{
+	    // we will count of opening bracket and store it in vector and stack
+      //and for closing bracket each time we will store top of stack and pop it
+	    
+	    int count = 0;
+	    vector <int> vec;
+	    stack <int> st;
+	    for(int i=0;i<S.size();i++){
+	        if(S[i]=='('){
+	            count++;
+	            st.push(count);
+	            vec.push_back(count);
+	        }
+	        else if(S[i]==')'){
+	            vec.push_back(st.top());
+	            st.pop();
+	            
+	        }
+	    }
+	    return vec;
+	}
