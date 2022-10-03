@@ -1,0 +1,25 @@
+vector<int> deleteElement(int arr[],int n,int k)
+{
+   
+   //initialise vector and store all the values of arr
+   
+    vector<int> ans(arr,arr+n);
+    int i=0;
+    
+    //run loop till i is smaller than n-1.(n-1 because we will not count last number)
+    while(i<n-1 && k>0){
+    
+    // if current element is smaller than next element then erase current element,decrement k and assign new size(because one element is reduced)
+    
+    
+        if(ans[i]<ans[i+1]){
+            ans.erase(ans.begin()+i);
+            i=0;
+            k--;
+            n = ans.size();
+        }
+        else i++;
+    }
+    return ans;
+    
+}
