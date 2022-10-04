@@ -1,0 +1,21 @@
+void MyQueue :: push(int x)
+{
+        // Your Code
+        //store at rear index and after inserting increment rear
+        
+        arr[rear++] =x;
+}
+
+//Function to pop an element from queue and return that element.
+int MyQueue :: pop()
+{
+        // Your Code  
+        //initialise variable x with -1 value and check if queue is not empty then store front index value and increment front and return x
+        int x =-1;
+        if(front!=rear){
+            x = arr[front];
+            front++;
+            
+        }
+        return x;
+}
