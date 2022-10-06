@@ -1,0 +1,21 @@
+  vector<int> snakePattern(vector<vector<int> > matrix)
+    {   
+      //if row is even then print left to right and if odd then print right to left.
+      
+        vector <int> vec;
+        for(int i= 0;i<matrix.size();i++){
+            
+            if(i%2==0){
+                for(int j=0;j<matrix[i].size();j++){
+                    vec.push_back(matrix[i][j]);
+                }
+            }
+            else{
+                for(int j=matrix[i].size()-1;j>=0;j--){
+                    vec.push_back(matrix[i][j]);
+                }
+            }
+            
+        }
+        return vec;
+    }
