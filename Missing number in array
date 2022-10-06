@@ -1,0 +1,32 @@
+  // APPROACH 1
+  
+  int MissingNumber(vector<int>& array, int n) {
+        // Your code goes here
+        
+        //sum of elements from 1 to n
+        int sum = n*(n+1)/2;
+        //now run loop till last element and substract it from sum. remaining element will be our answer.
+        
+        for(int i=0;i<array.size();i++){
+            sum = sum - array[i];
+        }
+        return sum;
+    }
+    
+    
+    //APPROACH 2
+    //here first we will apply xor operator to the array elements and after that
+    // we will again run loop from 1 to N the then duplicates will be cancelled out and our answer will be answer
+    
+     int MissingNumber(vector<int>& array, int n) {
+        // Your code goes here
+        int ans=0;
+        for(int i=0;i<n-1;i++){
+            ans=ans^array[i];
+        }
+        
+        for(int i=1;i<=n;i++){
+            ans=ans^i;
+        }
+        return ans;
+    }
