@@ -1,0 +1,25 @@
+	int countZeros(vector<vector<int>>A)
+	{
+		//code here
+    
+    //we we will start our loop from top right corner of the matrix so for that we initialise i with 0 and j with size-1;
+    
+		
+		int i= 0,j = A.size()-1;
+		int count =0;
+    
+    //element is sorted it means if element is 0 then all elements before that is also 0 and we have to check next row
+    // so for that we will add count as j+1 because indexing start with 0
+    //increment i because we have to check next row now
+		while(i<A.size() && j>=0){
+		    
+		    if(A[i][j]==0){ 
+		        count += j+1;
+		        i++;
+		        
+		    }
+		    else j--;
+		    
+		}
+		return count;
+	}
