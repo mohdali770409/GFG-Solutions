@@ -1,0 +1,28 @@
+   vector<vector<int>> sortedMatrix(int N, vector<vector<int>> Mat) {
+        //initialise temporary vector to store all the elements of matrix
+        vector <int> temp;
+        
+        //store all the elements of matrix
+        
+        for(int i=0;i<N;i++){
+            for(int j=0;j<N;j++){
+                temp.push_back(Mat[i][j]);
+            }
+        }
+        
+        //sort the vector
+        
+        sort(temp.begin(),temp.end());
+        
+        //initiliase k with 0 so we can get next element of temp and put all the elements back into matrix 
+        int k=0;
+        for(int i=0;i<N;i++){
+            for(int j=0;j<N;j++){
+                Mat[i][j] = temp[k++];
+            }
+        }
+        
+        //now matrix is sorted
+        
+        return Mat;
+    }
