@@ -1,0 +1,36 @@
+    int sortedCount(int N, int M, vector<vector<int>> Mat) {
+        // code here
+        
+        int count=0,ans =0;
+        
+        //count is used to know that all element is sorted or not. if count is equal to M-1 it means row is sorted so we will increment ans
+        
+        for(int i=0;i<N;i++){
+            count=0;
+            
+            //checking if element is sorted in increasing order or not
+            
+            for(int j=0;j<M-1;j++){
+                if(Mat[i][j]<Mat[i][j+1]){
+                    count++;
+                }
+            
+            }
+            
+            //checking if element is sorted in decreasing order or not
+            
+            if(count!=M-1){
+                count=0;
+                for(int j=0;j<M-1;j++){
+                    if(Mat[i][j]>Mat[i][j+1]){
+                        count++;
+                    }
+                }
+            }
+            
+            // if count is M-1 it means row is sorted either in decreasing order or increasing order
+            
+            if(count==M-1) ans++;
+        }
+        return ans;
+    }
