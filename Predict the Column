@@ -1,0 +1,27 @@
+    int columnWithMaxZeros(vector<vector<int>>arr,int N){
+        
+        //we we use count and prevCount 
+        //if count is greater than prevCount then we will make preCount as count and store col with current column number
+        
+        //make count as 0 so we can check another columns
+        
+        int col = 0;
+        int count;
+        int prevCount=0;
+        for(int i=0;i<N;i++){
+            count=0;
+            for(int j=0;j<N;j++){
+                if(arr[j][i]==0)  count++;
+                   
+           
+            }
+            
+            if(count>prevCount){ 
+                prevCount = count;
+                col = i;
+                
+            }
+        }
+        return col;
+        
+    }
