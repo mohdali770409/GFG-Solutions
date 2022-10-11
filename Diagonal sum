@@ -1,0 +1,26 @@
+   int DiagonalSum(vector<vector<int> >& matrix) {
+        // Code here
+        
+        
+       //jump to only diagonals so we can get O(N) complexity 
+       
+       int n = matrix.size();
+       int  i=0,j=0;
+       
+       //sum1 will sum up of left to right diagonal
+       int sum1=0,sum2=0;
+       while(i<n){
+           sum1 += matrix[i++][j++];
+           
+       }
+       
+       //sum2 will sum up of right to left diagonal
+       i=0,j = n-1;
+       while(j>=0){
+           sum2+= matrix[i++][j--];
+           
+           
+           
+       }
+       return sum1+sum2;
+    }
