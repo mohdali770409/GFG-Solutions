@@ -1,0 +1,23 @@
+    int maxOnes (vector <vector <int>> &Mat, int N, int M)
+        {
+            // your code here
+            
+            int i=0,j = M-1;
+            int maxi = -1;
+            int prev;
+            int count=0;
+            
+            
+            while(i<N && j>=0){
+                if(Mat[i][j]==1){
+                    maxi = i;
+                    j--;
+                 
+                    
+                }
+                else{
+                    i++;
+                }
+            }
+            return maxi;
+        }
