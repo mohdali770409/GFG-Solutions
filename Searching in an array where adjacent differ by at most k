@@ -1,0 +1,24 @@
+int search(int arr[], int n, int x, int k)
+{
+    // Complete the function
+    
+    int i=1; 
+    
+    //check if element is present at the 0th location or not if present then return 0th index
+    if(arr[0]==x) return 0;
+    
+    //run loop from 1 to till last element 
+    while(i<n){
+    
+    //if difference between previous element and current element is greater than k then return -1
+        if(abs(arr[i]-arr[i-1])>k) return -1;
+        
+        
+        if(arr[i]==x) return i;
+        i++;
+        
+        
+    }
+    
+    return -1;
+}    
