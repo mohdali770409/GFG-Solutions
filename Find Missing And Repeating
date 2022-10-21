@@ -1,0 +1,40 @@
+    int *findTwoElement(int *arr, int n) {
+        
+        
+        int a,b;
+        int flag =0;
+        
+        //first sort the array so no need of using space
+        
+        sort(arr,arr+n);
+        
+        for(int i=0;i<n-1;i++){
+        
+        //check for missing value
+            if(arr[i+1]-arr[i]>1 && flag ==0){
+                flag =1;
+                b = arr[i]+1;
+                
+            }
+            //check for duplicates
+            
+            if(arr[i]==arr[i+1]){
+                a = arr[i];
+            }
+        }
+        
+        //missing number not found
+        if(flag==0){
+            if(arr[0]>1){
+                b= arr[0]-1;
+            }
+            else{
+                b = arr[n-1]+1;
+            }
+        }
+        int *ans = new int[2];
+        ans[0] = a;
+        ans[1] = b;
+        return ans;
+        
+    }
