@@ -1,0 +1,20 @@
+	bool hasArrayTwoCandidates(int arr[], int n, int x) {
+	   
+     //create a unordered map to store the element
+	    
+	    unordered_map<int,int> m;
+	    
+	    for(int i=0;i<n;i++){
+      
+      //check if the another pair is already present int the map if present return true
+      //and if not then add to the map
+	        if(m.find(x-arr[i])!=m.end()) return true;
+	        m[arr[i]] = 1;
+	            
+
+	        
+	    }
+	    return false;
+	    
+	    
+	}
