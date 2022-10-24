@@ -1,0 +1,37 @@
+    int missingNumber(int arr[], int n) 
+    { 
+        // Your code here
+        
+        //sort the array
+        sort(arr,arr+n);
+        int i;
+        
+        //flag is used to check whether this is first positive integer or not.
+        int flag =1;
+        
+        //if there is only single element in the array and that element is not 1 then return 1.
+        
+        if(n==1 && arr[0]!=1) return 1;
+        
+        for( i=0;i<n;i++){
+            if(arr[i]>0){
+                
+                //if the element is first positive element and if it is not 1 then return 1
+                if(flag){ 
+                    flag=0;
+                    if(arr[i]!=1) return 1;
+                    
+                    
+                }
+                
+                
+                if(arr[i+1]-arr[i]>1) return arr[i]+1;
+                
+            }
+            
+            
+        }
+        
+        // if every integer is present the return last element next value.
+         return arr[n-1]+1;
+    } 
