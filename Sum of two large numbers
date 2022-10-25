@@ -1,0 +1,52 @@
+    string findSum(string X, string Y) {
+        // Your code goes here
+        
+        
+        int carry=0,sum=0;
+        
+        int i = X.size()-1;
+        int j = Y.size()-1;
+        string ans = "";
+        
+        //traverse from last position of string
+        
+        while(i>=0 || j>=0){
+        //assign carry to sum because if carry exist we can add
+        
+            sum = carry;
+            
+            //if i or j is greater or equal to zero then add it to sum
+            if(i>=0) sum = sum+X[i--]-'0';
+            if(j>=0) sum = sum+Y[j--] -'0';
+            
+            //if sum is greater than 9 then carry will become (1 eg. for 10 carry will be 1 ) else carry will be 0
+            if(sum>9) carry =1;
+            else carry =0;
+            
+            //insert sums last digit to ans
+            ans = ans+ to_string(sum%10);
+            
+        }
+        
+        //after loop if carry exist then add it to ans 
+        if(carry!=0) ans = ans+to_string(carry);
+        
+        //now reverse the ans string so we can get our string in correct form
+        reverse(ans.begin(),ans.end());
+        
+        //to remove trailing 0 
+        if(ans[0]=='0' && ans.size()>1) {
+            i=0;
+            while(ans[i]=='0'){
+                
+                i++;
+            }
+            ans.erase(0,i);
+            
+            //after renoving suppose all the number was 0 and all got deleted and we have to return 0
+            if(ans.size()==0) return "0";
+            
+        }
+        
+        return ans;
+    }
