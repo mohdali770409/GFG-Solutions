@@ -1,0 +1,63 @@
+// to find first occurence using binary search
+
+int first(int arr[],int n,int x){
+    int start =0,end = n-1,mid;
+    int temp=-1;
+     
+    while(start<=end){
+         mid = start+ (end-start)/2;
+       
+        if(arr[mid]==x) {
+            temp = mid;
+            
+            //logic to get the first occurence
+            end = mid-1;
+        }
+        else if(arr[mid]<x) start = mid+1;
+        else end = mid-1;
+        
+    }
+    return temp;
+
+}
+
+//to find last occurence
+int second(int arr[],int n,int x){
+    int start=0,end = n-1, mid;
+    int temp=-1;
+   
+    while(start<=end){
+         mid = start+(end-start)/2;
+        
+        if(arr[mid]==x){
+            temp = mid;
+            
+            //logic to get last occurence
+            
+            start = mid+1;
+        }
+        else if(arr[mid]<x) start = mid+1;
+        else end = mid-1;
+    }
+    return temp;
+}
+vector<int> find(int arr[], int n , int x )
+{
+    // code here
+    //call for first occurence
+    
+    int firstIn = first(arr,n,x);
+    
+    //call for last occurence
+    
+    int secondIn = second(arr,n,x);
+    
+    //storing first and last occurence
+    vector <int> ans;
+    ans.push_back(firstIn);
+    ans.push_back(secondIn);
+    return ans;
+    
+    
+    
+}
