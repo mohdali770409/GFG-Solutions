@@ -1,0 +1,39 @@
+bool findPair(int arr[], int size, int n){
+    //first sort the array
+    sort(arr,arr+size);
+    int start = 0,end = size-1;
+    
+    //if n is not 0 
+    if(n!=0){
+    for(int i=0;i<size;i++){
+        start = 0,end = size-1;
+        
+        //set target as current array element + n(given value) -------> n = target -arr[i]
+        
+        int target = arr[i] +n;
+        
+        //now find target by using binary search
+        
+        while(start<=end){
+            int mid = start +(end-start)/2;
+            if(arr[mid]==target) return true;
+            else if(arr[mid]<target) start = mid+1;
+            else end = mid-1;
+            
+        }
+    }
+    
+    
+    return false;
+    }
+    
+    //if n is equal to zero it means 2 elements needs to be same so after sorting check if current element is equal to next element 
+    //if current element is equal to next element then return true else return false
+    else {
+        
+        for(int i=0;i<size-2;i++){
+            if(arr[i]==arr[i+1]) return true;
+            
+        }
+        return false;
+    }
