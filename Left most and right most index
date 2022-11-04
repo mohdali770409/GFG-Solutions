@@ -1,0 +1,45 @@
+   
+    long long first(vector<long long> arr,long long x){
+        
+        long long start =0,end = arr.size()-1;
+         long long temp=-1;
+        while(start<=end){
+            int mid = start +(end-start)/2;
+            if(arr[mid]==x){
+                end = mid-1;
+                temp = mid;
+            }
+            else if(arr[mid]<x) start = mid+1;
+            else end = mid-1;
+            
+            
+        }
+        return temp;
+    }
+    long long second(vector<long long> arr,long long x){
+        
+        long long start =0,end = arr.size()-1;
+         long long temp=-1;
+        while(start<=end){
+            int mid = start +(end-start)/2;
+            if(arr[mid]==x){
+                start = mid+1;
+                temp = mid;
+            }
+            else if(arr[mid]<x) start = mid+1;
+            else end = mid-1;
+            
+            
+        }
+        return temp;
+    }
+    pair<long,long> indexes(vector<long long> v, long long x)
+    {
+        // code here
+        long long temp1 =first(v,x);
+        long long temp2 = second(v,x);
+        
+        if(temp1!=-1 && temp2 !=-1) return {temp1,temp2};
+        else return {-1,-1};
+        
+    }
