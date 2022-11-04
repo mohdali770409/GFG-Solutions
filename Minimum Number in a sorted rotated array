@@ -1,0 +1,24 @@
+   int minNumber(int arr[], int low, int high)
+    {
+      
+        //if there is only one element in the array.
+        if (high ==low) return arr[0];
+        
+        //if last element is the smallest element
+       if(arr[high]<arr[high-1]) return arr[high];
+       
+       //run loop till low is smaller than high
+       while(low<=high){
+           int mid = (low+high)/2;
+           
+           //if current mid element is smaller than previous element it means it is the smallest element in the array
+           
+           if(arr[mid]<arr[mid-1])return arr[mid];
+           
+           //if current mid element is greater than high it means our element lies after mid element so assing low ans mid +1
+           else if(arr[mid]>arr[high]) low = mid+1;
+           else high = mid-1;
+       }
+       return arr[0];
+        
+    }
