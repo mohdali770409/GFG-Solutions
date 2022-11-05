@@ -1,0 +1,24 @@
+   int findPeakElement(vector<int>& a) 
+    {
+        //initialise two pointer start and end start refers to 0th index and end refers to last index.
+        
+        int start =0,end = a.size()-1;
+       
+        int mid= start + (end-start)/2;
+        //run a loop till start is smaller than end
+        while(start<end){
+             
+             //if current mid element is smaller than next element then assign start as mid next element.
+             
+            if(a[mid]<a[mid+1]){
+                start = mid+1;
+            }
+            
+            //else assign end as mid(not mid-1 because may be first mid element is largest number)
+            else end = mid;
+            mid = start + (end-start)/2;
+        }
+        
+        //after all return mid element
+        return a[mid];
+    }
