@@ -1,0 +1,40 @@
+  int binarySearch(int arr[],int start,int end,int x ){
+       while(start<=end){
+                int mid = start + (end-start)/2;
+                if(arr[mid]==x){
+                    return mid;
+                }
+                else if(arr[mid]<x) start = mid+1;
+                else end = mid-1;
+      
+                
+            }
+            return -1;
+  }
+  
+  
+  
+    string isKSortedArray(int arr[], int n, int k)
+    {
+        //code here.
+        
+        //declare a temp array and store all elements of original array.
+        int temp[n];
+        for(int i=0;i<n;i++) temp[i] = arr[i];
+        
+        //now sort the array so we can apply binary search
+        sort(temp,temp+n);
+        
+        //traverse each element of original array and apply binary search on sorted temp array.
+        //if |current index-returned index| >k return false
+        for(int i=0;i<n;i++){
+        
+        
+            
+            int ans = binarySearch(temp,0,n-1,arr[i]);
+            if(abs(i-ans)>k) return "No";
+           
+            
+        }
+        return "Yes";
+    }
