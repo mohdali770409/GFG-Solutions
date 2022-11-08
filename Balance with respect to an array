@@ -1,0 +1,31 @@
+  string isBalanced(int a[],int n,int x)
+    {
+        //initialise two pointers one with 0th index another with last index.
+        
+        int start =0,end = n-1;
+        int temp=-1;
+        // if either ceil or floor value not found then return balanced
+        
+        if(a[0]>=x || a[n-1]==x) return "Balanced";
+        
+        while(start<end){
+        
+            int mid = start + (end-start)/2;
+            
+            //if array current mid element is equal to x then return balanced
+            if(a[mid]==x){
+              return "Balanced";
+            }
+            // if current mid element is smaller than x then store in the temporary variable
+            else if(a[mid]<x) {
+                temp = mid;
+                start = mid+1;
+                
+            }
+            else end = mid;
+            
+        }
+        //now check whether the element is balanced or not according to given condition.
+        if(abs(a[temp]-x)==abs(a[temp+1]-x)) return "Balanced";
+        return "Not Balanced";
+    }
