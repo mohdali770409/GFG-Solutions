@@ -1,0 +1,39 @@
+  //this function will check the number of elements smaller than or equal to the target element.
+  
+  int checkCount(int arr2[],int n,int target){
+      
+      int start =0,end = n-1;
+      int ans =0;
+      while(start<=end){
+          int mid = start +(end-start)/2;
+          if(arr2[mid]<=target){
+              ans = max(ans,mid+1);
+              start = mid+1;
+          }
+          else end = mid-1;
+          
+          
+      }
+      return ans;
+      
+  }
+  
+  
+    vector<int> countEleLessThanOrEqual(int arr1[], int arr2[], 
+                                 int m, int n)
+    {
+    //Your code goes here
+    
+    //first we will sort the second array and make a result vector to store the number of elements smaller than or equal to current element
+    sort(arr2,arr2+n);
+    vector <int> result;
+    
+    //run a loop make every element as target for checkCount funtion
+    for(int i=0;i<m;i++){
+        
+        int temp = checkCount(arr2,n,arr1[i]);
+        result.push_back(temp);
+        
+    }
+    return result;
+    }
