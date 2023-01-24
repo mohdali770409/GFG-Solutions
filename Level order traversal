@@ -1,0 +1,40 @@
+ vector<int> levelOrder(Node* node)
+    {
+     
+     
+     //create vector ans so we can store data into it
+     
+      vector<int> ans;
+      
+      //create queue where we can store node address
+      
+      queue< Node*> q;
+      
+      //now store root of that node
+      q.push(node);
+      
+      //run loop till q becomes empty
+      
+      while(!q.empty()){
+      //run a loop to a current size of queue
+          int size = q.size();
+          
+          for(int i=0;i<size;i++){
+          //store queue front value and pop it from queue and then store left and right node of tree in queue if exist
+          
+          
+              Node * temp = q.front();
+              q.pop();
+              if(temp->left) q.push(temp->left);
+              if(temp->right) q.push(temp->right);
+              
+              //store current queue value into ans vector
+              ans.push_back(temp->data);
+          }
+
+      }
+      
+      //return the ans
+      return ans;
+      
+    }
