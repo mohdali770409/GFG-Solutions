@@ -1,0 +1,20 @@
+class Solution {
+  public:
+    // Function to return a list containing the inorder traversal of the tree.
+    vector <int> help(Node *root,vector <int> &ans){
+        if(root){
+            help(root->left,ans);
+            ans.push_back(root->data);
+            help(root->right,ans);
+        }
+        return ans;
+    }
+    vector<int> inOrder(Node* root) {
+        // Your code here
+        vector <int> ans;
+        if(root){
+            help(root,ans);
+            
+        }
+        return ans;
+    }
