@@ -1,0 +1,36 @@
+
+//take a helping function that can perform operation and gives us result
+
+vector <int> help(Node *root,vector<int> &ans){
+   //perform operation till root is not empty
+   
+    if(root){
+    
+    //store root data into ans vector and then call left side of tree and right side of tree
+    
+    ans.push_back(root->data);
+    help(root->left,ans);
+    help(root->right,ans);
+    
+   }
+   
+   //after performing all operating return ans vector.
+   
+    return ans;
+   }
+
+vector <int> preorder(Node* root)
+{
+  // Your code here
+  
+  //create a vector named ans;
+  vector <int> ans;
+  if(root!=NULL) {
+  //now call help function by passing root and ans vector
+      help(root,ans);
+      
+  }
+ return ans;
+  
+   
+}
