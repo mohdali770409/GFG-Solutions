@@ -1,0 +1,36 @@
+    vector<int> inOrder(Node* root)
+    {
+        //first create a temporary node so we can get back node from stack
+        
+        Node *temp = root;
+        //create a stack where nodes can be stored
+        
+        stack<Node *> st;
+        //create a vector ans where inorder traversal will be stored
+        
+        vector<int> ans;
+        
+        //run a loop till it is true
+        while(true){
+        
+        //if node is not null then push node into stack and traverse left side of tree
+            if(temp!=NULL){
+            st.push(temp);
+            temp = temp->left;
+            }
+            
+            // if node is null then check whether stack is empty or not.
+            //if stack is empty then break the loop and return the ans
+            //if stack is not empty then pop top element from stack and store it into temp node and store its data into ans vector and traverse right subtree
+            else {
+                if(st.empty()) break;
+                temp = st.top();
+                st.pop();
+                ans.push_back(temp->data);
+                temp = temp->right;
+            }
+            
+        }
+        return ans;
+  
+    }
