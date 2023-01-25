@@ -1,0 +1,26 @@
+vector<int> preOrder(Node* root)
+    {
+        
+        //create a vector where we can store our answer
+        
+        vector<int> ans;
+        
+        //if root is null it means there is no tree so return the empty vector.
+        if(root==NULL) return ans;
+        
+        //create a stack where we can store node of tree
+        stack <Node *> st;
+        st.push(root);
+        while(!st.empty()){
+            root = st.top();
+            st.pop();
+            ans.push_back(root->data);
+            
+            //first store the right node then left because stack works on LIFO. so first we need to be left that's why we have stored right node
+            if(root->right) st.push(root->right);
+            if(root->left) st.push(root->left);
+            
+            
+        }
+        return ans;
+    }
