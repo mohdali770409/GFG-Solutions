@@ -1,0 +1,39 @@
+   vector<int> postOrder(Node* node) {
+        //create a vector ans where we will store answer
+        
+        vector<int> ans;
+        
+        //create a temporary node so we don't a to interrupt original root.
+        
+        Node * temp= node;
+        //create two stack first will store exploring nodes and second will be the postorder traversal answer in final
+        
+        stack<Node *> st1;
+        stack<Node *> st2;
+        st1.push(temp);
+        
+        //run a loop till first stack becomes empty
+        while(!st1.empty()){
+        
+        //take top element from stack and store in a temporary node and also store in new stack and pop it from stack1
+            st2.push(st1.top());
+            temp = st1.top();
+            st1.pop();
+            
+            //now store popped node left and right node if exist
+            if(temp->left) st1.push(temp->left);
+            if(temp->right) st1.push(temp->right);
+            
+            
+        }
+        
+        //now run a another loop.
+        //pop all the value from stack2 and store it into ans vector and return it.
+        while(!st2.empty()){
+            temp = st2.top();
+            st2.pop();
+            ans.push_back(temp->data);
+
+        }
+        return ans;
+    }
