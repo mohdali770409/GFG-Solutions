@@ -1,0 +1,14 @@
+   int height(struct Node* node){
+        // if node becomes null then return 0 
+        
+        if(node==NULL) return 0;
+        
+        //reach the left most leave
+        
+        int lh = height(node->left);
+        
+        //reach the right most leave
+        
+        int rh = height(node->right);
+        return 1+max(lh,rh);
+    }
