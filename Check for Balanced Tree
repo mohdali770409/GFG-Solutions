@@ -1,0 +1,25 @@
+ int check(Node *root){
+ 
+ //concept:
+ // if the tree is not balanced then return -1 else return height of tree(if the answer is not -1 then we will return true else false).
+        if(root==NULL) return 0;
+        
+        //these will return height of tree
+        int leftHeight = check(root->left);
+        if(leftHeight==-1) return -1;
+        int rightHeight = check(root->right);
+        if(rightHeight==-1) return -1;
+        
+        //if absolute difference between leftHeight and rightHeight is greater than 1 then return -1
+        if(abs(leftHeight-rightHeight)>1) return -1;
+        return 1 + max(leftHeight,rightHeight);
+        
+        
+    }
+    
+    bool isBalanced(Node *root)
+    {
+        //  Your Code here
+        return check(root) !=-1;
+        
+    }
