@@ -1,0 +1,24 @@
+  // idea is that on the current node find the left height from the current node and find right height from the current node
+  //find maximum of left height + right height+1;
+  
+  int diameter(Node* root) {
+        int maxi =0;
+        height(root,maxi);
+        return maxi;
+        
+    }
+    int height(Node * root,int &maxi){
+    
+    //here maxi is taken as pass by reference so no need to return 
+    
+        if(root==NULL) return 0;
+        
+        //for the height of node
+        int lh = height(root->left,maxi);
+        int rh = height(root->right,maxi);
+        
+        //calculate maximum diameter
+        maxi  = max(maxi,lh+rh+1);
+        return 1+max(lh,rh);
+        
+    }
