@@ -1,0 +1,25 @@
+ int findMaxSum(Node* root)
+    {
+        //here maxi will be passed by reference
+        int maxi = INT_MIN;
+        
+        // call findSumMax BY passing maxi integer
+        findSumMax(root,maxi);
+        return maxi;
+        
+    }
+    int findSumMax(Node * root,int & maxi){
+        if(root==NULL) return NULL;
+        
+        //if sum of path is negative then return 0(this will cover negative edges).
+        
+        int left = max(0,findSumMax(root->left,maxi));
+        int right = max(0,findSumMax(root->right,maxi));
+        
+        //maxi will be sum of current node data,left subtree data and right subtree data
+        maxi = max(root->data+left+right,maxi);
+        
+        //maxi will be the answer not here returned value
+        return max(left,right)+root->data;
+        
+    }
