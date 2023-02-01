@@ -1,0 +1,60 @@
+vector <int> zigZagTraversal(Node* root)
+    {
+    	// create a vector ans where answer will be stored
+    	vector <int> ans;
+    	if(root==NULL) return ans;
+    	
+      //take a queue and insert root element 
+      
+    	queue<Node *> q;
+    	q.push(root);
+      
+      //take a boolean variable and make it true
+      
+    	bool leftToRight = true;
+      
+      //run a loop till queue becomes empty
+      
+    	while(!q.empty()){
+      
+      //make another vector for temporary traversal and run a loop to the current size of queue.
+      
+    	    int size = q.size();
+    	    vector<int> temp;
+    	    for(int i=0;i<size;i++){
+          
+          //take out queue front value and delete it from queue 
+          //store data of deleted queue element in temporary vector
+          
+    	        Node * node = q.front();
+    	        q.pop();
+    	        temp.push_back(node->data);
+    	        
+              //store node left and right element inside the queue.
+              
+    	        if(node->left ) q.push(node->left);
+    	        if(node->right) q.push(node->right);
+    	        
+    	   
+    	    }
+          //if leftToRight is false then reverse temporary vector and insert into final ans vector
+          
+    	    if(!leftToRight){
+    	        reverse(temp.begin(),temp.end());
+    	        ans.insert(ans.end(),temp.begin(),temp.end());
+    	    }
+          
+          //if leftToRight is true then insert into final vector
+          
+    	    else{
+    	        ans.insert(ans.end(),temp.begin(),temp.end());
+    	    }
+          
+          //make leftToRight false if it was true else make it true
+    	    leftToRight = !leftToRight;
+    	    
+    	}
+    	return ans;
+    	
+    	
+    }
