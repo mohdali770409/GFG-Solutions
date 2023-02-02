@@ -1,0 +1,89 @@
+//this function  will check whether current node is leaf or not if leaf then return true else false.
+
+bool isLeaf(Node *root){
+    if(!root->right && !root->left) return true;
+    else return false;
+    
+}
+
+//this function is used for left boundary traversal except leaf nodes
+
+void leftBoundary(Node * root,vector<int> &ans){
+    Node * temp = root->left;
+    //run loop till temp becomes 
+    
+    while(temp){
+    
+    //if current node is not leaf then add to ans vector 
+    //move to left left left and if left is not present then move right
+    
+       if(!isLeaf(temp)) ans.push_back(temp->data);
+       if(temp->left) temp = temp->left;
+       else temp = temp->right;
+
+    }
+    
+}
+
+//this function is used for right boundary traversal except leaf node
+
+void rightBoundary(Node * root,vector<int> &ans){
+
+//stack will be used so we have to reverse the vector.
+
+    Node * temp = root->right;
+    stack <int> st;
+    while(temp){
+    
+    //if  current node is not leaf then push it in stack
+    // move right right right and if right not found then move left
+        if(!isLeaf(temp)) st.push(temp->data);
+        if(temp->right) temp = temp->right;
+        else temp = temp->left;
+        
+    }
+    
+    //now take top element of stack and push it into ans and pop it from stack
+    
+    while(!st.empty()){
+        ans.push_back(st.top());
+        st.pop();
+    }
+}
+
+//this function is used to store leaf node 
+
+void leaf(Node *root,vector <int> &ans){
+
+    
+    
+    if(isLeaf(root)){
+        ans.push_back(root->data);
+        return;
+    }
+    if(root->left) leaf(root->left,ans);
+    if(root->right) leaf(root->right,ans);
+}
+
+    vector <int> boundary(Node *root)
+    {
+        //Your code here
+        vector <int> ans;
+        if(!root) return ans;
+        
+        if(!isLeaf(root)) ans.push_back(root->data);
+        
+        //first add left boundary to ans without leaf 
+        
+        leftBoundary(root,ans);
+        
+        //add leaf nodes to ans
+        
+        leaf(root,ans);
+        
+        //add right boundary in reverse without leaf nodes
+        
+        rightBoundary(root,ans);
+        return ans;
+        
+    }
