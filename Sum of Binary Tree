@@ -1,0 +1,21 @@
+//this function will calculate sum. here ans variable is taken as reference.
+long int sum(Node * root,int &ans){
+    if(!root) return 0;
+    ans = ans+ root->key;
+    sum(root->left,ans);
+    sum(root->right,ans);
+    
+    
+    
+    
+}
+
+long int sumBT(Node* root)
+{
+   
+    if(!root) return 0;
+    int ans=0;
+    sum(root,ans);
+    return ans;
+    
+}
