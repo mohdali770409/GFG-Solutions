@@ -1,0 +1,26 @@
+//this function will calculate minimum value
+// take mini as reference so we don't have to return any value
+int help(Node * root,int &mini){
+
+    if(!root) return 0;
+    
+    //calculate minimum value between mini and current root data
+    
+    //preorder traversal
+    mini = min(mini,root->data);
+    help(root->left,mini);
+    help(root->right,mini);
+    
+    
+}
+
+int minValue(Node* root) {
+    // if root is null then return -1
+    if(!root) return -1;
+    
+    
+    int mini = INT_MAX;
+    help(root,mini);
+    return mini;
+    
+}
