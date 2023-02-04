@@ -1,0 +1,30 @@
+  //inorder of binary search tree will give us sorted list.
+  //do inorder traversal and store result in temp vector
+  //vector is passed as reference so we don't need to return it
+  
+  
+  bool helper(Node *root,vector<int> &temp){
+        
+         if(!root) return 0;
+        
+        helper(root->left,temp);
+        temp.push_back(root->data);
+        helper(root->right,temp);
+    }
+    
+   
+    
+    bool isBST(Node* root) 
+    {
+        // Your code here
+        vector <int> temp;
+        helper(root,temp);
+        //now temp vector will be of sorted. so if current element is greater or equal to next element it means this tree is not BST.
+        
+        for(int i=0;i<temp.size()-1;i++){
+            if(temp[i]>=temp[i+1]) return false;
+            
+        }
+        return true;
+  
+    }
