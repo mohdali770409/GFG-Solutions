@@ -1,0 +1,42 @@
+vector<int> findSpiral(Node *root)
+{
+    //take a queue ans store root in queue
+    
+    queue <Node *> q;
+    q.push(root);
+    vector<int> ans;
+    //if root is null then return empty vector
+    
+    if(!root) return ans; 
+    //create a variable count =0 .if the count(level) is even then directly push the data in ans vector 
+    //if count is odd then we have to reverse it so we can take stack and after storing in stack we will push back to ans so we get reversed.
+    
+    int count=0;
+    //run a loop till queue becomes empty
+    
+    while(!q.empty()){
+    
+    
+        int size = q.size();
+        stack<int> st;
+        count++;
+        for(int i=0;i<size;i++){
+            Node *temp = q.front();
+            q.pop();
+            if(count%2==0) ans.push_back(temp->data);
+            else st.push(temp->data);
+            //if left node is present then add node into queue or right is present then add node into queue also.
+            
+            if(temp->left) q.push(temp->left);
+            if(temp->right) q.push(temp->right);
+        }
+        
+        while(!st.empty()){
+            
+            ans.push_back(st.top());
+            st.pop();
+        }
+        
+    }
+    return ans;
+}
