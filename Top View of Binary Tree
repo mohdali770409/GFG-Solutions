@@ -1,0 +1,31 @@
+    vector<int> topView(Node *root)
+    {
+        //line concept and level order traversal will be used
+        //create a vector ans and queue which will store root and line.
+        //the first element of every line will be our top view
+        //take a map(not ordered so we can get sorted values). and end of queue we will traverse it
+        
+        
+        vector<int> ans;
+        queue<pair<Node *,int>> q;
+        q.push({root,0});
+        map <int,int> mp;
+        while(!q.empty()){
+            auto it = q.front();
+            q.pop();
+            
+            //here first we have stored node and then after line in queue 
+            Node *node = it.first;
+            int line = it.second;
+            if(mp.find(line)==mp.end()){
+                mp[line] = node->data;
+            }
+            if(node->left) q.push({node->left,line-1});
+            if(node->right) q.push({node->right,line+1});
+            
+        }
+        for(auto it:mp){
+            ans.push_back(it.second);
+        }
+        return ans;
+    }
