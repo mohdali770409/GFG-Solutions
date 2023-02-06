@@ -1,0 +1,32 @@
+vector <int> bottomView(Node *root) {
+        // here line concept and level order traversal will be used
+        //we will take a queue and store node and line 
+        //we will take a map(ordered map not unordered map because we need lines sorted) in which we will store line and node data
+        //after queue becomes empty we will traverse map and take out node data into ans and return it
+        
+        vector<int> ans;
+        if(!root) return ans;
+        queue<pair<Node *,int>> q;
+        q.push({root,0});
+        map <int,int> mp;
+        while(!q.empty()){
+            auto it = q.front();
+            q.pop();
+            Node * node = it.first;
+            int line = it.second;
+            mp[line] = node->data;
+            
+            //here line-1 means if we go left it means -1 line
+            //here line+1 means if we go right it means +1 line
+            if(node->left) q.push({node->left,line-1});
+            if(node->right) q.push({node->right,line+1});
+            
+            
+        }
+        for(auto it:mp){
+            ans.push_back(it.second);
+        }
+        
+        return ans;
+        
+    }
