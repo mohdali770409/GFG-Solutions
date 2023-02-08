@@ -1,0 +1,19 @@
+ //Here we will divide tree into two subtree
+ //we will move left subtree to left and right subtree to right simultaneously
+ //and perform AND operation we will move left subtree to right and right subtree to left
+ 
+ bool isSymmetricHelp(struct Node * sleft,struct Node* sright){
+        if(!sleft || !sright) return sleft==sright;
+        if(sleft->data!= sright->data) return false;
+        return isSymmetricHelp(sleft->left,sright->right) && isSymmetricHelp(sleft->right,sright->left);
+        
+        
+    }
+    
+    bool isSymmetric(struct Node* root)
+    {
+	    //if the root is null return true
+	    
+	    return root==NULL|| isSymmetricHelp(root->left,root->right);
+	    
+    }
