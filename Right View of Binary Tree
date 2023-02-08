@@ -1,0 +1,25 @@
+   //the right most node of each level will be our right view.
+   //we will perform inverse preorder means first we will store right most node and then move right and then move left
+   //for not repeating the nodes we will use logic i.e if level == ans vector size it means this is the non visited level.
+   //take answer as reference so no need to return any thing.
+
+   
+   void rightViewBT(Node *root,int level,vector <int> &ans){
+        
+        if(!root) return ;
+        
+        
+        if(level==ans.size()) ans.push_back(root->data);
+        rightViewBT(root->right,level+1,ans);
+        rightViewBT(root->left,level+1,ans);
+        
+        
+        
+    }
+    vector<int> rightView(Node *root)
+    {
+       // Your Code here
+       vector <int> ans;
+       rightViewBT(root,0,ans);
+       return ans;
+    }
