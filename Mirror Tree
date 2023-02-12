@@ -1,0 +1,14 @@
+ void mirror(Node* node) {
+        // code here
+        //here you can use preorder traversal concept 
+        //if left or right node is present then swap the nodes with each other else move left and then move right
+        
+        if(!node) return;
+        if(node->left || node->right){
+            Node * p = node->left;
+            node->left = node->right;
+            node->right = p;
+        }
+        mirror(node->left);
+        mirror(node->right);
+    }
