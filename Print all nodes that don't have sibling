@@ -1,0 +1,27 @@
+//here preorder traversal will be used.
+//first we will check if node left is present and node left is not present then add it to answer vector.
+//or if node right is present and node left is not present then add it to answer vector.
+// create a helper function which takes node and vector as input.
+//ans vector should be pass by reference so we don't have to return answer vector
+//after traversing whole tree now sort it.
+
+void helper(Node *node,vector<int> &ans){
+    if(!node) return;
+    if(node->left && !node->right) ans.push_back(node->left->data);
+    if(node->right && !node->left) ans.push_back(node->right->data);
+    
+    helper(node->left,ans);
+    helper(node->right,ans);
+    
+}
+vector<int> noSibling(Node* node)
+{
+    // code here
+    vector<int> ans;
+    if(!node) return {-1};
+    helper(node,ans);
+    sort(ans.begin(),ans.end());
+    if(ans.empty()) return {-1};
+    
+    else return ans;
+}
