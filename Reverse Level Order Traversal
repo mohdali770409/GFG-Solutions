@@ -1,0 +1,35 @@
+//here logic is same as level order traversal but difference is:
+//first we will puch right node into queue then left node
+//and first we will store values into stack and after the first while is over we will transfer stack data into vector data
+
+
+vector<int> reverseLevelOrder(Node *root)
+{
+    // code here
+    
+    queue<Node *> q;
+    q.push(root);
+    stack <int> st;
+    vector <int> ans;
+    while(!q.empty()){
+        int size = q.size();
+        
+        for(int i=0;i<size;i++){
+            Node *temp = q.front();
+            q.pop();
+            st.push(temp->data);
+            if(temp->right) q.push(temp->right);
+            if(temp->left) q.push(temp->left);
+            
+            
+        }
+    }
+    while(!st.empty()){
+        ans.push_back(st.top());
+        st.pop();
+    }
+    return ans;
+    
+    
+    
+}
