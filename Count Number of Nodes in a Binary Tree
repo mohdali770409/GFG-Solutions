@@ -1,0 +1,33 @@
+  //as we know that if left and right heigh of binary tree is same then total number of nodes will be 2^height-1
+  //here logic is if the left node height and right hand height is same then we will perform operation 2^height-1 and return it
+  
+  int countNodes(Node* root) {
+        // Write your code here
+        if(!root) return 0;
+        int lh = findLeftHeight(root);
+        int rh = findRightHeight(root);
+        //if left height and right height is same then perform operation and return it
+        
+        if(lh==rh) return ((1<<lh)-1);
+        
+        //and if not then we will move towards left and right node
+        
+        return 1+countNodes(root->left) +countNodes(root->right);
+        
+    }
+    int findLeftHeight(Node *node){
+        int height = 0;
+        while(node){
+            height++;
+            node = node->left;
+        }
+        return height;
+    }
+    int findRightHeight(Node *node){
+        int height = 0;
+        while(node){
+            height++;
+            node = node->right;
+        }
+        return height;
+    }
