@@ -1,0 +1,18 @@
+
+//here the logic is if the current node is smaller than n1 and n2 then move right.
+//if the current node is greater than n1 and n2 then move left.
+//and if both not found then return current index.
+
+Node* LCA(Node *root, int n1, int n2)
+{
+   //Your code here
+   
+   if(!root) return NULL;
+   if(root->data<n1 && root->data<n2) LCA(root->right,n1,n2);
+   else if(root->data>n1 && root->data>n2) LCA(root->left,n1,n2);
+   else return root;
+  
+  
+   
+  
+}
