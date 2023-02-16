@@ -1,0 +1,20 @@
+//create a vector in which we will store answer
+//now push all elements inside answer.
+//sort it into descending order.
+//now ans[Key-1] will be our answer
+int help(Node *root,int target,vector <int> &ans){
+        if(!root) return 0;
+        ans.push_back(root->data);
+        
+        help(root->left,target,ans);
+        help(root->right,target,ans);
+        
+    }
+    int kthLargest(Node *root, int K)
+    {
+        vector <int> ans;
+        help(root,K,ans);
+        sort(ans.begin(),ans.end(),greater<int>());
+        
+        return ans[K-1];
+    }
