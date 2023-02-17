@@ -1,0 +1,21 @@
+//if current node is equal to input then return input(it means we have found our key element)
+//if current node is greater than input then store current node data into ceil variable and move left(because in left smaller elements are present)
+//if current node is smaller than input then just move right
+
+int findCeil(Node* root, int input) {
+    if (root == NULL) return -1;
+
+    // Your code here
+    int ceil = -1;
+    while(root){
+        if(root->data==input) return input;
+        if(root->data>input) {
+            ceil = root->data;
+            root = root->left;
+        }
+        else{
+            root = root->right;
+        }
+    }
+    return ceil;
+}
