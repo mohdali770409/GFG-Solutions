@@ -1,0 +1,21 @@
+//here we will use concept of height
+//here the initial value of flag is true and flag is taken as reference
+//if current node is not leaf node and left and right is not equal then make flag = false;
+
+int help(Node *node,bool & flag){
+        if(!node) return 0;
+        
+        int lt =help(node->left,flag);
+        int rt =help(node->right,flag);
+        if(node->left && node->right &&lt!=rt) flag = false;
+        return 1+max(lt,rt);
+    }
+    bool check(Node *root)
+    {
+        //Your code here
+        if(!root) return true;
+        bool flag = true;
+        help(root,flag);
+        return flag;
+        
+    }
