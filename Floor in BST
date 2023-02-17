@@ -1,0 +1,17 @@
+//if current node is equal t0 x to input then return x(it means we have found our key element)
+//if current node is lesser than x then store current node data into floor variable and move right(because in left smaller elements are present)
+//if current node is greater than x then just move left
+int floor(Node* root, int x) {
+   
+    int floorvalue = -1;
+    while(root){
+        if(root->data==x) return x;
+        else if(root->data<x) {
+            floorvalue = root->data;
+            root = root->right;
+        }
+        else root = root->left;
+    }
+    return floorvalue;
+    
+}
