@@ -1,0 +1,33 @@
+//Here the logic is :
+//if the current node is equal to key then break the loop and return root
+//if the current node is smaller thant key:
+   //1.if current node right element is present then move right
+   //2.if current node right element is not present then insert the node and break the loop
+//else if current node is greater than key :
+   //1.if current node left element is present then move left
+   //2.if current node left element is not present then insert the node and break the loop
+   
+   
+Node* insert(Node* root, int Key) {
+
+    if(!root) return new Node(Key);
+    Node *curr = root;
+    while(true){
+        if(curr->data==Key) break;
+       else if(curr->data<Key) {
+            if(curr->right) curr = curr->right;
+            else {
+                curr->right = new Node(Key);
+                break;
+            }
+        }
+        else{
+            if(curr->left) curr = curr->left;
+            else {
+                curr->left = new Node(Key);
+                break;
+            }
+        }
+    }
+    return root;
+}
