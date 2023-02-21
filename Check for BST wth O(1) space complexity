@@ -1,0 +1,16 @@
+  
+  //here the logic is we will maintain rangee if the current element lies between the range then we will return true else false
+  
+  bool help(Node *root,int mini,int maxi){
+        if(!root) return true;
+        if(root->data <mini || root->data>maxi) return false;
+        bool left = help(root->left,mini,root->data);
+        bool right= help(root->right,root->data,maxi);
+        
+        return left && right;
+    }
+    bool isBST(Node* root) 
+    {
+        // Your code here
+        return help(root,INT_MIN,INT_MAX);
+    }
