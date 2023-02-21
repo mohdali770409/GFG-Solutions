@@ -1,0 +1,30 @@
+   //here the logic is:
+   //store maximum height of the tree.
+   //create another function help which will add maximum value to your answer variable,
+   //in help function pass node,sum(store the current sum),height(total height of tree),ans(which will store maximum sum)
+   //we will use preorder traversal ans when we call left or right node then we will pass height = height-1 so when the height reached at 0 we can store our ans
+   
+   int height(Node *root){
+        if(!root) return 0;
+        int l = height(root->left);
+        int r = height(root->right);
+        return max(l,r)+1;
+        
+    }
+    int help(Node *root,int sum,int height,int &ans){
+        if(!root){
+             if(height==0)ans = max(sum,ans);
+             return 0;
+        }
+        sum = sum+root->data;
+        help(root->left,sum,height-1,ans);
+        help(root->right,sum,height-1,ans);
+    }
+    int sumOfLongRootToLeafPath(Node *root)
+    {
+        //code here
+        int ans=0,sum=0;
+        int hght = height(root);
+        help(root,sum,hght,ans);
+        return ans;
+    }
