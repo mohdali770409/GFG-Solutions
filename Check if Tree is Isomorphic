@@ -1,0 +1,16 @@
+ //here if both root is null then return true
+ //if any root is null but another not then return false
+ //check if both node is same then traverse everywhere and check 
+ 
+ bool isIsomorphic(Node *root1,Node *root2)
+    {
+    
+    if(!root1 && !root2) return true;
+    if(!root1 || !root2) return false;
+    if(root1->data == root2->data) {
+    return (isIsomorphic(root1->left,root2->left) && isIsomorphic(root1->right,root2->right))
+          ||(isIsomorphic(root1->left,root2->right)&& isIsomorphic(root1->right,root2->left));
+        
+    }
+    else return false;
+    }
