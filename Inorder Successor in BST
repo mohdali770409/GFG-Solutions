@@ -1,0 +1,19 @@
+    // logic of solving in O(1) space complexity 
+    //initialise a successor node as null
+    //if value is lesser than given node then don't store just move
+    //if value is greater than given node then store it and move
+   
+   
+    Node * inOrderSuccessor(Node *root, Node *x)
+    {
+        //Your code here
+        Node * ans = NULL;
+        while(root){
+            if(root->data>x->data){
+                ans = root;
+            }
+            if(root->data>x->data) root = root->left;
+            else root = root->right;
+        }
+        return ans;
+    }
