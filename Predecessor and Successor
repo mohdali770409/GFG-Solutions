@@ -1,0 +1,43 @@
+// logic of solving in O(1) space complexity 
+
+    //if value is lesser than given node then don't store just move
+    //if value is greater than given node then store it and move
+
+void Successor(Node *root,Node *&suc,int key){
+    while(root){
+        if(root->key>key){
+            suc = root;
+            root = root->left;
+        }
+        else root = root->right;
+    }
+    
+}
+
+// logic of solving in O(1) space complexity 
+   
+    //if value is lesser than given node then assign the node 
+    //if value is greater then don't store just move on
+    
+void Predecessor(Node *root,Node *&pre,int key){
+   
+    while(root){
+        if(root->key<key){
+            pre = root;
+            root = root->right;
+        }
+        else {
+            root = root->left;
+        }
+    }
+    
+}
+void findPreSuc(Node* root, Node*& pre, Node*& suc, int key)
+{
+
+// Your code goes here
+    Successor(root,suc,key);
+    Predecessor(root,pre,key);
+
+
+}
