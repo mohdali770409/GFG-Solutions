@@ -1,0 +1,28 @@
+ //here we will use level order traversal.
+ //in level order traversal we will add max variable and initialise with INT_MIN and if the node element is greater than it will be assign to max
+ //we will also use ans vector to return answer. once 1 level gets completed then we will push max value inside ans vector
+ 
+ 
+ vector<int> largestValues(Node* root)
+    {
+        
+        queue<Node *> q;
+        q.push(root);
+        vector <int> ans;
+        
+        
+        while(!q.empty()){
+            int max = INT_MIN;
+            int size = q.size();
+            for(int i=0;i<size;i++){
+                Node *temp = q.front();
+                q.pop();
+                if(temp->data>max) max = temp->data;
+                if(temp->left) q.push(temp->left);
+                if(temp->right) q.push(temp->right);
+                
+            }
+            ans.push_back(max);
+        }
+        return ans;
+    }
