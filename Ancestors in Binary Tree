@@ -1,0 +1,23 @@
+//here the logic is if left or right is true then return true
+//if the root is null then return false
+//if the root data becomes equal to target then return true and don't add it into ans vector ans
+//if niether left neigther right is true then remove last element from ans
+
+
+bool helper(Node *root,int target,vector<int> &ans){
+        if(!root) return false;
+        if(root->data==target) return true;
+        ans.push_back(root->data);
+        if(helper(root->left,target,ans)||helper(root->right,target,ans)) return true;
+        ans.pop_back();
+        return false;
+    }
+    vector<int> Ancestors(struct Node *root, int target)
+    {
+         // Code here
+         vector<int> ans;
+         if(!root) return ans;
+         helper(root,target,ans);
+         reverse(ans.begin(),ans.end());
+         return ans;
+    }
