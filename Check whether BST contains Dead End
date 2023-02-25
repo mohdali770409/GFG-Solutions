@@ -1,0 +1,23 @@
+//assign min with 1 and max with INT_MAX
+//if we go left then max will be root data -1 and min will be same
+//if we go right then min will be root data +1 and max will be same
+//if min is equal to max then return true
+bool help(Node *root,int min,int max){
+    if(!root){
+        return false;
+    }
+    if(max==min) return true;
+    if(help(root->left,min,root->data-1) || help(root->right,root->data+1,max)){
+        return true;
+    }
+    
+    
+}
+bool isDeadEnd(Node *root)
+{
+    //Your code here
+    int min = 1,max = INT_MAX;
+  
+   return  help(root,min,max);
+
+}
