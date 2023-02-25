@@ -1,0 +1,33 @@
+    //here we will use concept of  level order traversal 
+    //we will take two variables one sumEven and another is sumOdd.
+    //for even and odd level we will use counter.if counter is even then sum it into sumEven and of counter is odd then sum it into sumOdd.
+    
+    int getLevelDiff(Node *root)
+    {
+       
+       int sumEven =0;
+       int sumOdd = 0;
+       int count = -1;
+       queue <Node *> q;
+       q.push(root);
+       while(!q.empty()){
+           count++;
+           int size = q.size();
+           for(int i=0;i<size;i++){
+               Node *temp = q.front();
+               q.pop();
+               if(count%2==0){
+                   sumEven += temp->data;
+                   
+               }
+               else {
+                   sumOdd += temp->data;
+               }
+               if(temp->left) q.push(temp->left);
+               if(temp->right) q.push(temp->right);
+           }
+           
+       }
+       return sumEven-sumOdd;
+       
+    }
