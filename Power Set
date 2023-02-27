@@ -1,0 +1,33 @@
+      //int this question we will apply concept of subsequences using recursion
+      //we will take ans vector to store answer and it will be taken by reference so we need not to return anything
+      //temp will be used to store characters of string which we have taken
+      
+      void subsequence(int ind,vector<string> &ans,string s,int n,string temp){
+            if(ind == n){
+                if(temp.size()>0)ans.push_back(temp);
+                
+                
+                return;
+                
+            }
+            
+            //taken elements
+          
+            temp.push_back(s[ind]);
+            subsequence(ind+1,ans,s,n,temp);
+            
+            //non taken elements
+            temp.pop_back();
+            subsequence(ind+1,ans,s,n,temp);
+            
+            
+        }
+		vector<string> AllPossibleStrings(string s){
+		    // Code here
+		    string temp = "";
+		    vector <string> ans;
+		    subsequence(0,ans,s,s.size(),temp);
+		    sort(ans.begin(),ans.end());
+		    return ans;
+		    
+		}
