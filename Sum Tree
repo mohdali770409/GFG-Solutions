@@ -1,0 +1,22 @@
+    
+    //here we will check whether left sum is equal to right sum or not.
+    //ans should be passed by reference
+    
+    int help(Node* root,bool &ans){
+    
+   
+        if(!root) return 0;
+        if(!root->left && !root->right) return root->data;
+        int ls = help(root->left,ans);
+        int rs = help(root->right,ans);
+        
+        if(root->data!=ls+rs) ans =false;
+        return root->data+ls+rs;
+    }
+    bool isSumTree(Node* root)
+    {
+         // Your code here
+         bool ans = true;
+         help(root,ans);
+        return ans;
+    }
