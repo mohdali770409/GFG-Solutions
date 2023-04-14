@@ -1,0 +1,38 @@
+
+//count first lower bound 
+
+//then count upper bound
+
+//initiliase a variable lowerBound which stores lowerBound  and upperBound which stores upper bound
+
+//assign lowerBound and upperBound with -1,-1(if element not found then it will be return as 0 by checking condition)
+
+//return upperBound-lowerBound+1
+
+
+
+int count(int arr[], int n, int x) {
+	    // code here
+	    int start = 0,end = n-1,lowerBound = -1,upperBound=-1;
+	    while(start<=end){
+	        int mid = start+(end-start)/2;
+	        if(arr[mid]==x){
+	            end = mid-1;
+	            lowerBound = mid;
+	        }
+	        else if(arr[mid]<x) start = mid+1;
+	        else end = mid-1;
+	    }
+	    start=0,end = n-1;
+	    while(start<=end){
+	        int mid = start+(end-start)/2;
+	        if(arr[mid]==x){
+	            start = mid+1;
+	            upperBound = mid;
+	        }
+	        else if(arr[mid]<x) start = mid+1;
+	        else end = mid-1;
+	    }
+	    if(upperBound==-1 && lowerBound==-1) return 0;
+	    return upperBound-lowerBound+1;
+	}
