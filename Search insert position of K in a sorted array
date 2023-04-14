@@ -1,0 +1,16 @@
+  //just apply simple binary search
+  //if element is found then return mid
+  //if element not found it means start crosses end then return start
+  int searchInsertK(vector<int>Arr, int N, int k)
+    {
+        // code here
+        int start = 0,end = N-1;
+        while(start<=end){
+            int mid = start +(end-start)/2;
+            if(Arr[mid]==k) return mid;
+            else if(Arr[mid]<k) start = mid+1;
+            else end = mid-1;
+            
+        }
+        return start;
+    }
