@@ -1,0 +1,21 @@
+//All elements before the required element have the first occurrence at even index and next occurrence at odd index.
+
+//All elements after the required element have the first occurrence at odd index and next occurrence at even index.
+
+int low = 0,high= n-1;
+        while(low<=high){
+            int mid = (low+high)/2;
+            if(arr[mid]!=arr[mid+1] && arr[mid]!=arr[mid-1]) return arr[mid];
+            else if(mid%2!=0){
+                if(arr[mid]!=arr[mid-1]) high = mid-1;
+                else low = mid+1;
+            }
+            else{
+                if(arr[mid]==arr[mid+1]){
+                    low = mid+1;
+                    
+                }
+                else high = mid-1;
+            }
+        }
+        return -1;
