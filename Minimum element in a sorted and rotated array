@@ -1,0 +1,18 @@
+//here the logic is
+// the minimum element is the only element whose previous is greater than it. If there is no previous element, then there is no rotation (the first element is minimum). 
+// We check this condition for the middle element by comparing it with (mid-1)th and (mid+1)th elements.
+// If the minimum element is not at the middle (neither mid nor mid + 1), then: 
+// If the middle element is smaller than the last element, then the minimum element lies in the left half
+// Else minimum element lies in the right half.
+int findMin(int arr[], int n){
+
+        int low = 0,high = n-1;
+        if(arr[0]<=arr[n-1]) return arr[0];
+        while(low<=high){
+        int mid = (low+high)/2;
+        if(arr[mid]<=arr[mid-1] && arr[mid]<=arr[mid+1]) return arr[mid];
+        else if(arr[0]<=arr[mid]) low = mid+1;
+        else high = mid-1;
+        }
+        return arr[n-1];
+    }
