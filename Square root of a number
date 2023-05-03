@@ -1,0 +1,31 @@
+/* initialize variables low=1, high=x, ans
+iterate over the array while start <= end
+initialize mid on each iteration as mid = (start + end)/2
+check if mid*mid == x, then return mid
+if mid*mid < x, then iterate on the upper half. i.e., update low = mid -1 and ans = mid
+If mid * mid > x, then update high = mid-1, i.e., iterate for the lower half
+if we comes out from the loop then return ans.
+
+*/
+    
+    
+    
+    
+    
+    long long int floorSqrt(long long int x) 
+    {
+         
+        long long low = 1,high =x,ans=-1;
+        
+        while(low<=high){
+            long long mid = (low+high)/2;
+            long long square = mid*mid;
+            if(square==x) return mid;
+            else if(square<x){
+                ans = mid;
+                low = mid+1;
+            }
+            else high = mid-1;
+        }
+        return ans;
+    }
