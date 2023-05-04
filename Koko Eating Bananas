@@ -1,0 +1,30 @@
+ int timefun(int mid, vector<int> &piles){
+      int sum = 0;
+      for(int i=0;i<piles.size();i++){
+          sum += ceil(1.0*piles[i]/mid);
+       
+      }
+      return sum;
+      
+  }
+    int Solve(int N, vector<int>& piles, int H) {
+        // it finds maximum element 
+        
+        int low = 0,high = *max_element(piles.begin(),piles.end());
+        int ans = -1;
+        
+        while(low<=high){
+            int mid = (low+high)/2;
+            //timefun function will divide the element with mid and takes ceil value and add it to sum and proceeds to next elements and do the same
+            
+            int times = timefun(mid,piles);
+            //if the sum is smaller than or equal to given hour then store the result and reduce search space to mid-1
+            
+            if(times<=H){
+                ans = mid;
+                high = mid-1;
+            }
+            else low = mid+1;
+        }
+        return ans;
+    }
