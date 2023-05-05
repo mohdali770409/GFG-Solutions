@@ -1,0 +1,16 @@
+//if there is '(' bracket then increment count and if this '(' bracket comes then decrement the count
+string removeOuter(string& s) {
+       
+        string result ="";
+        int count=0,start=0;
+    
+        for(int i=0;i<s.length();i++){
+            if(s[i]=='(') count++;
+            else count--;
+            if(count==0){
+                result = result + s.substr(start+1,i-start-1);
+                start = i+1;
+            }
+        }
+        return result;
+    }
