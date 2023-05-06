@@ -1,0 +1,25 @@
+//compare all the elements character wise and every string character is same then add it to the string
+
+string longestCommonPrefix (string arr[], int N)
+    {
+
+        int min = INT_MAX;
+        string str = "";
+        
+        for(int i=0;i<N;i++){
+            if(arr[i].size()<min) min = arr[i].size();
+        }
+        
+        for(int i=0;i<min;i++){
+            for(int j=0;j<N;j++){
+                if(arr[0][i]!=arr[j][i] && str.length()!=0) {
+                    return str;
+                }
+                if(arr[j][i]!=arr[0][i] && str.length()==0) return "-1";
+
+            }
+            str.push_back(arr[0][i]);
+        }
+        return str;
+        
+    }
